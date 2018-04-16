@@ -52,7 +52,7 @@ jikan = setInterval(timer,500);
 
 
 // キー入力で処理をする
-document.onkeypress = function(e) {
+window.onkeypress = function(e) {
     if (e.keyCode === 8) {  // 'Backspace'
         if (input.innerText !== "") {  // 入力されている文字があれば
             input.innerText = input.innerText.slice(0, -1);  // 一文字削除
