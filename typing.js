@@ -58,7 +58,12 @@ window.onkeydown = function(e) {
             input.innerText = input.innerText.slice(0, -1);  // 一文字削除
         }
     } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'a' から 'z'
-        input.innerText += e.key;  // 入力した文字を表示
+        const currentCode = e.which || e.code;
+        let currentKey = e.key;
+        if(!currentKey){
+            currentKey = String.fromCharCode(currentCode);
+        }
+        input.innerText +=currentKey;    // 入力した文字を表示
     }
 
     // 入力した文字が問題文のローマ字と一致しているかどうか
