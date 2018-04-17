@@ -42,11 +42,12 @@ function timer()
 
     answer = start - now;
     answer = answer/1000;
-time.innerText = parseInt(answer);
+
        if(answer <=0){
 
-       	clearInterval(timer);
+       	clearInterval(jikan);
        }
+       time.innerText = parseInt(answer);
 }
 
 jikan = setInterval(timer,500);
