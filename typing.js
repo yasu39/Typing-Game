@@ -32,10 +32,10 @@ var time = document.getElementById('time');
 var question = document.getElementById('question');  // 問題文を表示する場所
 var message = document.getElementById('message');  // 入力された文字を表示する場所
 var question_index = 0;  // 今何番目の問題かどうか
-var yomi = document.getElementById('yomi');
 var start = new Date().getTime()+30000;
+var yomikata = document.getElementById('yomikata')
 
-var yomikata = document.js.namae.value;
+
 function timer()
 {
     var now = new Date().getTime();
@@ -54,24 +54,24 @@ jikan = setInterval(timer,500);
 
 // キー入力で処理をする
 window.onkeydown = function(e) {
-    if (e.keyCode === 8) {  // 'Backspace'
-        if (yomikata!== "") {  // 入力されている文字があれば
-            yomikata = yomikata.slice(0, -1);  // 一文字削除
-        }
-    } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'A' から 'Z'
-        var currentCode = e.which || e.code;
-        var currentKey = e.key;
-        if(!currentKey){
-            currentKey = String.fromCharCode(currentCode);
-        }
-        yomikata +=currentKey.toLowerCase();    // 入力した文字を小文字で表示
-    }
+    // if (e.keyCode === 8) {  // 'Backspace'
+    //     if (yomikata!== "") {  // 入力されている文字があれば
+    //         yomikata = yomikata.slice(0, -1);  // 一文字削除
+    //     }
+    // } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'A' から 'Z'
+    //     var currentCode = e.which || e.code;
+    //     var currentKey = e.key;
+    //     if(!currentKey){
+    //         currentKey = String.fromCharCode(currentCode);
+    //     }
+    //     yomikata +=currentKey.toLowerCase();    // 入力した文字を小文字で表示
+    // }
 
     // 入力した文字が問題文のローマ字と一致しているかどうか
-    if (questions_roma[question_index] === yomikata) {
+    if (questions_roma[question_index] === yomikata.value) {
         message.innerText = hukidasi[question_index];
 
-        // 次の問題があれば、次の問題を表示
+        // 次の問題があれば、次の問題を表示e
         ++question_index;
         if (question_index < questions_text.length) {
             // 2秒後に次の問題へ
@@ -80,7 +80,7 @@ window.onkeydown = function(e) {
             }, 1500);
         } else {
             // 全てが終了している
-            message.innerText = 'イェーイ！';
+            message.innerText = 'おめでとうございます！';
         }
     }
 }
