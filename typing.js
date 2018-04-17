@@ -57,14 +57,13 @@ window.onkeydown = function(e) {
         if (input.innerText !== "") {  // 入力されている文字があれば
             input.innerText = input.innerText.slice(0, -1);  // 一文字削除
         }
-    } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'a' から 'z'
+    } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'A' から 'Z'
         var currentCode = e.which || e.code;
         var currentKey = e.key;
         if(!currentKey){
             currentKey = String.fromCharCode(currentCode);
         }
-        var resKey = currentKey.toLowerCase();
-        input.innerText +=resKey;    // 入力した文字を表示
+        input.innerText +=currentKey.toLowerCase();    // 入力した文字を小文字で表示
     }
 
     // 入力した文字が問題文のローマ字と一致しているかどうか
