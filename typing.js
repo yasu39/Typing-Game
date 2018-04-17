@@ -77,7 +77,7 @@ window.onkeydown = function(e) {
             // 2秒後に次の問題へ
             setTimeout(function() {
                 show_question();  // 次の問題へ
-            }, 1000);
+            }, 1500);
         } else {
             // 全てが終了している
             message.innerText = 'イェーイ！';
@@ -88,7 +88,8 @@ window.onkeydown = function(e) {
 // 問題文を表示する
 function show_question() {
     question.innerText = questions_text[question_index];  // 問題文を表示
-    yomikata= "";  // メッセージを削除
+    yomikata= ""; 
+    message.innerText = ""; // メッセージを削除
 };
 // 問題を表示
 
