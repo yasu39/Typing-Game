@@ -20,21 +20,22 @@ var questions_roma = [
 ];
 
 var hukidasi=[
-'あと4モン',
-'あと3もん',
-'あと2もん',
-'後一問',
+'正解！あと4モン',
+'正解！あと3もん',
+'正解！あと2もん',
+'正解！あと1問',
 'LAST'
 ];
 
 
 var time = document.getElementById('time');
 var question = document.getElementById('question');  // 問題文を表示する場所
-var input = document.getElementById('input');  // 入力された文字を表示する場所
 var message = document.getElementById('message');  // 入力された文字を表示する場所
 var question_index = 0;  // 今何番目の問題かどうか
-
+var yomi = document.getElementById('yomi');
 var start = new Date().getTime()+30000;
+
+var yomikata = document.js.namae.value;
 function timer()
 {
     var now = new Date().getTime();
@@ -54,8 +55,8 @@ jikan = setInterval(timer,500);
 // キー入力で処理をする
 window.onkeydown = function(e) {
     if (e.keyCode === 8) {  // 'Backspace'
-        if (input.innerText !== "") {  // 入力されている文字があれば
-            input.innerText = input.innerText.slice(0, -1);  // 一文字削除
+        if (yomikata!== "") {  // 入力されている文字があれば
+            yomikata = yomikata.slice(0, -1);  // 一文字削除
         }
     } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'A' から 'Z'
         var currentCode = e.which || e.code;
@@ -63,11 +64,11 @@ window.onkeydown = function(e) {
         if(!currentKey){
             currentKey = String.fromCharCode(currentCode);
         }
-        input.innerText +=currentKey.toLowerCase();    // 入力した文字を小文字で表示
+        yomikata +=currentKey.toLowerCase();    // 入力した文字を小文字で表示
     }
 
     // 入力した文字が問題文のローマ字と一致しているかどうか
-    if (questions_roma[question_index] === input.innerText) {
+    if (questions_roma[question_index] === yomikata) {
         message.innerText = hukidasi[question_index];
 
         // 次の問題があれば、次の問題を表示
@@ -87,10 +88,8 @@ window.onkeydown = function(e) {
 // 問題文を表示する
 function show_question() {
     question.innerText = questions_text[question_index];  // 問題文を表示
-    input.innerText = "";  // 入力されている文字を削除
-    message.innerText = "";  // メッセージを削除
+    yomikata= "";  // メッセージを削除
 };
-
 // 問題を表示
 
 show_question();

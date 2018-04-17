@@ -2,20 +2,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <style>body {
-  font-size: 16px;
-  transform: scale(0.8);}
+    <style>
+    input[type=text] {
+    font-size: 16px;
+    transform: scale(0.8);}
+    </style>
+    <style>
+    id= "question"{background: #eeeeee;}
     </style>
 </head>
-<p>入力	
-：<input type="text" name="namae" size="40" maxlength="20">
+</head>
+<p>読み方（アルファベット）<br>
+    <form name ="js">
+	<input type="text" id="yomikata" name="namae" value="" size="40" maxlength="20">
+	</form>
 </p>
 <body>
-<div><span>問題：</span><span id="question"></span></div>
-<div><span>入力：</span><span id="input"></span></div>
-<hr>
+<div><span id="question"></span></div>
 <div><span>残り時間</span><span id="time"></span><div>
 <div><span id="message"></span></div>
+<hr>
 
 <script src="typing.js"></script>
 </body>
