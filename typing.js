@@ -53,19 +53,7 @@ jikan = setInterval(timer,500);
 
 
 // キー入力で処理をする
-window.onkeydown = function(e) {
-    // if (e.keyCode === 8) {  // 'Backspace'
-    //     if (yomikata!== "") {  // 入力されている文字があれば
-    //         yomikata = yomikata.slice(0, -1);  // 一文字削除
-    //     }
-    // } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'A' から 'Z'
-    //     var currentCode = e.which || e.code;
-    //     var currentKey = e.key;
-    //     if(!currentKey){
-    //         currentKey = String.fromCharCode(currentCode);
-    //     }
-    //     yomikata +=currentKey.toLowerCase();    // 入力した文字を小文字で表示
-    // }
+yomikata.oninput= function(e) {
 
     // 入力した文字が問題文のローマ字と一致しているかどうか
     if (questions_roma[question_index] === yomikata.value) {
@@ -88,7 +76,7 @@ window.onkeydown = function(e) {
 // 問題文を表示する
 function show_question() {
     question.innerText = questions_text[question_index];  // 問題文を表示
-    yomikata= ""; 
+    yomikata.value= ""; 
     message.innerText = ""; // メッセージを削除
 };
 // 問題を表示
