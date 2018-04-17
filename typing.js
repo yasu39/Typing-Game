@@ -52,18 +52,19 @@ jikan = setInterval(timer,500);
 
 
 // キー入力で処理をする
-window.onkeypress = function(e) {
+window.onkeydown = function(e) {
     if (e.keyCode === 8) {  // 'Backspace'
         if (input.innerText !== "") {  // 入力されている文字があれば
             input.innerText = input.innerText.slice(0, -1);  // 一文字削除
         }
-    } else if (97 <= e.keyCode && e.keyCode <= 122) {  // 'a' から 'z'
+    } else if (65 <= e.keyCode && e.keyCode <= 90) {  // 'a' から 'z'
         var currentCode = e.which || e.code;
         var currentKey = e.key;
         if(!currentKey){
             currentKey = String.fromCharCode(currentCode);
         }
-        input.innerText +=currentKey;    // 入力した文字を表示
+        var resKey = currentKey.toLowerCase();
+        input.innerText +=resKey;    // 入力した文字を表示
     }
 
     // 入力した文字が問題文のローマ字と一致しているかどうか
